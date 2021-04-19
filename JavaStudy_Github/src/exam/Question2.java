@@ -6,5 +6,6 @@ public class Question2 {
 		
 		System.out.println("Random!!");
 		System.out.println("branchB 수정!");
+		System.out.println("branchB 두 번째 수정!");
 	}
 }
