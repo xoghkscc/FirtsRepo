@@ -26,9 +26,9 @@ public class D13_Vehicle_5_subtitle {
 			return;
 		}
 		if (checkWeeknd(mycar)) {
-			System.out.printf("오늘의 요일은 %s이며 당신의 차 번호는 %s이므로 운행이 가능합니다.", todayWeekend, mycar.getNumber());
+			System.out.printf("오늘은 %s입니다. 당신의 차 번호는 %s이므로 운행이 가능합니다.", todayWeekend, mycar.getNumber());
 		} else {
-			System.out.printf("오늘의 요일은 %s이며 당신의 차 번호는 %s이므로 운행이 불가능합니다.", todayWeekend, mycar.getNumber());
+			System.out.printf("오늘은 %s입니다. 당신의 차량은 " + mycar.getCarType()+"이며 차 번호는 %s이므로 운행이 불가능합니다.", todayWeekend, mycar.getNumber());
 		}
 	}
 
