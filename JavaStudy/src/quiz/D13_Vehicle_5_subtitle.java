@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import myobj.MyScanner;
 
@@ -19,19 +21,19 @@ public class D13_Vehicle_5_subtitle {
 	public D13_Vehicle_5_subtitle(Car mycar) {
 		ArrayList<String> exceptType = new ArrayList<String>();
 		Collections.addAll(exceptType, "LightCar", "Disabled", "InfantRide");
-		if (exceptType.contains(mycar.carType)) {
-			System.out.println("당신의 차량은 " + mycar.carType + "이므로 제외차량입니다. 금일 운행 가능합니다.");
+		if (exceptType.contains(mycar.getCarType())) {
+			System.out.println("당신의 차량은 " + mycar.getCarType() + "이므로 제외차량입니다. 금일 운행 가능합니다.");
 			return;
 		}
 		if (checkWeeknd(mycar)) {
-			System.out.printf("오늘의 요일은 %s이며 당신의 차 번호는 %s이므로 운행이 가능합니다.", todayWeekend, mycar.number);
+			System.out.printf("오늘의 요일은 %s이며 당신의 차 번호는 %s이므로 운행이 가능합니다.", todayWeekend, mycar.getNumber());
 		} else {
-			System.out.printf("오늘의 요일은 %s이며 당신의 차 번호는 %s이므로 운행이 불가능합니다.", todayWeekend, mycar.number);
+			System.out.printf("오늘의 요일은 %s이며 당신의 차 번호는 %s이므로 운행이 불가능합니다.", todayWeekend, mycar.getNumber());
 		}
 	}
 
 	public boolean checkWeeknd(Car mycar) {
-		int endNum = mycar.number % 10;
+		int endNum = mycar.getNumber() % 10;
 		int[] mon = {1, 6};
 		int[] tue = {2, 7};
 		int[] wed = {3, 8};
@@ -55,6 +57,7 @@ public class D13_Vehicle_5_subtitle {
 		}
 		return true;
 	}
+	
 	public String weekend() {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf("오늘 날짜를 기준으로 추가할 date를 쓰세요 (테스트용, 0을 기입 시 today기준>>");
@@ -73,15 +76,14 @@ public class D13_Vehicle_5_subtitle {
 
 class Car {
 	Random ran;
-	int number;
+	private int number;
 	ArrayList<String> vehicleType = new ArrayList<String>();
-	String carType;
+	private String carType;
 
 	public Car() {
 		ran = new Random();
 		this.number = ran.nextInt(9000) + 1000;// 1000~9999 실제용
-		Collections.addAll(vehicleType, "LightCar", "Disabled", "InfantRide", "MidsizeCar", "LargeCar", "Sedan",
-				"SemiMediumCar");
+		Collections.addAll(vehicleType, "LightCar", "Disabled", "InfantRide", "MidsizeCar", "LargeCar", "Sedan", "SemiMediumCar");
 		// 앞에 3개는 경차, 유아동승, 장애인차이므로 제외 뒤에 4개는 중형차, 대형차, 세단, 준중형차라서 차량 5부제에 걸림
 
 		this.carType = vehicleType.get(ran.nextInt(7)); // 실제용
@@ -89,7 +91,15 @@ class Car {
 	}
 
 	public void testCar() {
-		this.number = MyScanner.inputInt("차량 번호를 입력>> ");
+		while(true) {
+			int inputNum = MyScanner.inputInt("차량 번호를 입력>> ");
+			if(Pattern.matches("[\\d]{4}", ""+inputNum)) {
+				this.number = inputNum;
+				break;
+			}else {
+				System.out.println("차량 번호는 1000~9999까지 숫자입니다.");
+			}
+		}
 		switch (MyScanner.inputInt("1번 : 제외차량, 2번 : 일반 차량>>")) {
 		case 1:
 			this.carType = vehicleType.get(0);// 테스트용
@@ -100,6 +110,14 @@ class Car {
 		default:
 			break;
 		}
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public String getCarType() {
+		return carType;
 	}
 
 }
