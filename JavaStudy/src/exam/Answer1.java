@@ -6,5 +6,6 @@ public class Answer1 {
 		System.out.println("branch C에서 만들고 있음");
 		
 		System.out.println("branch D가 작업할 떼ㅐ branch C도 놀고 있지 않았음");
+		System.out.println("C가 일을 더 잘해서 커밋을 두 번 했음");
 	}
 }
