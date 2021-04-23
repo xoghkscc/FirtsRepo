@@ -20,7 +20,7 @@ class CardDeck{
 				cardDeck.add(card2);
 			}
 		}
-		Collections.shuffle(cardDeck);
+		Collections.shuffle(cardDeck);//카드덱에 순서대로 쌓여있으므로 무작위로 섞어야함
 	}
 	
 	public Card getCard() {
