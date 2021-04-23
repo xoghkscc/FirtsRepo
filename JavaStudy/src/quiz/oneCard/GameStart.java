@@ -15,6 +15,8 @@ public class GameStart {
 	int order = -1;// 턴을 의미
 	ArrayList<Card> trahDeck = new ArrayList<Card>();//
 	int orderQ = 1; // Q가 나오면 순서가 반대로 되어야 하므로 이를 판단하는 변수
+	final int MAX_CARD_ATTACK_TYPE_A = 3;//A카드 공격 시에 추가될 카드 횟수
+	final int MAX_CARD_ATTACK_TYPE_2 = 2;//A카드 공격 시에 추가될 카드 횟수
 	public GameStart(ArrayList<Player> player, CardDeck cd) {
 		// main메서드에서 카드 7장씩 들고 있는 player들과 카드덱들 돌려주고 남은 카드덱들이 넘어옴
 		this.player = player;
@@ -148,7 +150,8 @@ public class GameStart {
 				this.order--;
 			}else {
 				this.order++;
-			}//방향이 정방향이라면 턴을 하나 줄이고 gameLogic()에서 한 턴 증가하므로 결국은 턴은 유지됨
+			}
+			//방향이 정방향이라면 턴을 하나 줄이고 gameLogic()에서 한 턴 증가하므로 결국은 턴은 유지됨
 			// 방향이 역방향이라면 턴을 하나 늘리고 gameLogic()에서 한 턴 감소하므로 결국은 턴은 유지됨
 		} else if(laidCard.gameNum.equals("Q")) {
 			System.out.println("-----------------------------");
@@ -269,7 +272,7 @@ public class GameStart {
 
 	public ArrayList<Card> attackA() {
 		ArrayList<Card> attackCardA = new ArrayList<Card>();
-		for (int i = 0; i < 3; i++) {
+		for (int idx = 0; idx < MAX_CARD_ATTACK_TYPE_A; idx++) {
 			try {
 				attackCardA.add(cd.getCard());
 			} catch (IndexOutOfBoundsException e) {
@@ -283,7 +286,7 @@ public class GameStart {
 
 	public ArrayList<Card> attackTwo() {
 		ArrayList<Card> attackCardTwo = new ArrayList<Card>();
-		for (int i = 0; i < 2; i++) {
+		for (int idx = 0; idx < MAX_CARD_ATTACK_TYPE_2; idx++) {
 			try {
 				attackCardTwo.add(cd.getCard());
 			} catch (IndexOutOfBoundsException e) {
@@ -297,7 +300,6 @@ public class GameStart {
 
 	// 플레이어가 7번을 낼 경우 깔린 카드 (laidCard)에 대해 원하는 문양의 7번 카드를 반환해주는 메서드
 	public Card sevenChange() {
-		String[] shape = { "♠", "♣", "♥", "◆" };
 		Card changeCard = new Card();
 		while(true) {
 			int userShape = MyScanner.inputInt("♠, ♣, ♥, ◆ 중 바꿀 문양을 택하세요>>(1~4)");
