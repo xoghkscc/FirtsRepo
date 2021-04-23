@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import myobj.MyScanner;
-
+//
 public class E02_1_OneCard {
 	//처음에 카드덱을 정해놓고 시작 
 	static CardDeck cd = new CardDeck();

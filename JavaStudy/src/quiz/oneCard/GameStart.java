@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 import myobj.MyScanner;
-
+//
 public class GameStart {
 	Scanner sc = new Scanner(System.in);
 	ArrayList<Player> player;
