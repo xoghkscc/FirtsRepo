@@ -7,12 +7,13 @@ class Table implements Comparable<Table>{
 	int startDay, starthour, endDay;
 	int userhour;
 	int endhour;
+	int number_of_people;
 	ArrayList<Integer> usehour = new ArrayList<Integer>();
 	String name;
 	String phoneNum;
 	final int dayOfHour = 24;
 	
-	public Table(int tableNum, String phoneNum, String name, int startDay, int starthour, int userhour) {
+	public Table(int tableNum, String phoneNum, String name, int startDay, int starthour, int userhour, int number_of_people) {
 		this.tableNum = tableNum;
 		this.userhour = userhour;
 		this.phoneNum = phoneNum;
@@ -20,6 +21,8 @@ class Table implements Comparable<Table>{
 		this.startDay = startDay;
 		this.starthour = starthour;
 		this.endhour =starthour + userhour;
+		this.number_of_people = number_of_people;
+		
 		for(int idx=starthour; idx<endhour; idx++) {
 			usehour.add(idx);
 		}
@@ -51,7 +54,7 @@ class Table implements Comparable<Table>{
 	
 	@Override
 	public String toString() {
-		String contents = String.format("[%d번 테이블 %d일 %d시부터 %d일 %d시까지 입니다.]",tableNum, startDay, starthour, endDay, endhour);
+		String contents = String.format("[%d번 테이블 %d일 %d시부터 %d일 %d시까지 입니다.[%d명] ]",tableNum, startDay, starthour, endDay, endhour, number_of_people);
 		return contents;
 	}
 	@Override

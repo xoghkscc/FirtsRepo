@@ -28,7 +28,7 @@ public class ReservationSystem {
 				break;
 			case 3:
 				System.out.println("------------------------------------------------");
-				for(Table table : tableSet) {
+				for (Table table : tableSet) {
 					System.out.println(table);
 				}
 				System.out.println("------------------------------------------------");
@@ -46,29 +46,35 @@ public class ReservationSystem {
 	}
 
 	public void reservationSystem() {
-		int tableNum=0;
+		int tableNum = 0;
 		int startDay, starthour, endDay;
 		int userhour;
 		int endhour;
+		int number_of_people;
 		String name;
 		String phoneNum;
 		LocalDate now = LocalDate.now();
 		int lastDay = now.lengthOfMonth();
 		String days = String.format("[1~%d]", lastDay);
-		
-		while(true) {
-			startDay = MyScanner.inputInt("예약하고 싶은 일자를 써주세요."+days+" >> ");
-			if(startDay>=1 && startDay<= lastDay) {
+
+		while (true) {
+			startDay = MyScanner.inputInt("예약하고 싶은 일자를 써주세요." + days + " >> ");
+			if (startDay >= 1 && startDay <= lastDay) {
 				break;
-			}else {
+			} else {
 				System.out.println("올바른 날짜를 다시 입력해 주세요.");
 			}
 		}
 		starthour = MyScanner.inputInt("예약하고 싶은 시간을 써주세요 (0~23) >>");
 		while (true) {
 			userhour = MyScanner.inputInt("사용하려는 시간을 써주세요(2시간 단위) >>");
+			number_of_people = MyScanner.inputInt("인원 수를 써주세요 (최소 2명 최대 4명)");
 			if (userhour % 2 == 0) {
-				break;
+				if (number_of_people >= 2 && number_of_people <= 4) {
+					break;
+				}else {
+					System.out.println("인원은 최소 2명 최대 4명입니다.");
+				}
 			} else {
 				System.out.println("예약은 2시간 단위만 됩니다.");
 			}
@@ -101,9 +107,9 @@ public class ReservationSystem {
 				System.out.print("예약자 번호(-포함)>");
 				phoneNum = sc.next();
 				if (Pattern.matches("010-\\d{4}-\\d{4}", phoneNum)) {
-					tableSet.add(new Table(tableNum, phoneNum, name, startDay, starthour, userhour));
+					tableSet.add(new Table(tableNum, phoneNum, name, startDay, starthour, userhour, number_of_people));
 					System.out.println("------------------------------------------------");
-					System.out.printf("%d번 %d일 %d시부터 %d시간 테이블 정상 예약 되었습니다.\n", tableNum, startDay, starthour, userhour);
+					System.out.printf("%d번 %d일 %d시부터 %d시간 테이블 정상 예약 되었습니다.[%d명]\n", tableNum, startDay, starthour, userhour, number_of_people);
 					System.out.println("------------------------------------------------");
 					break;
 				} else {
@@ -114,7 +120,7 @@ public class ReservationSystem {
 			System.out.println("예약이 꽉찼습니다.");
 		}
 	}
-	
+
 	public void checkReservationm() {
 		System.out.printf("예약자 이름을 쓰세요 >>");
 		String name = sc.next();
