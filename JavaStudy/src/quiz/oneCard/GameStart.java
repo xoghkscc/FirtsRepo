@@ -39,6 +39,7 @@ public class GameStart {
 		}
 	}
 	
+	//플레이어의 승리를 판단하는 메서드
 	public void win() {
 		if(player.get(this.order).takeCard.size()==0) {
 			System.out.println("-----------------------------");
