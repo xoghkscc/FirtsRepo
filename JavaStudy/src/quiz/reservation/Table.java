@@ -82,8 +82,8 @@ class Table implements Comparable<Table>{
 		for(int idx=Math.max(starthour, this.starthour); idx<Math.min(starthour +userhour, this.endhour); idx++) {
 			checkhour.add(idx);
 		}
-		if(this.startDay == startDay) {
-			checkhour.retainAll(usehour);
+		if(this.startDay == startDay && checkhour.retainAll(usehour)) {
+			
 			isTf = true;
 			System.out.println("------------------------------------------------");
 			System.out.println(tableNum+"테이블과 중복됩니다. ");

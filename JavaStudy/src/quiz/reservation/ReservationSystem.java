@@ -93,11 +93,15 @@ public class ReservationSystem {
 			while (isTf) {
 				isTf = false;
 				tableNum = MyScanner.inputInt("예약할 테이블 번호(1~3)>>");
-				for (Integer num : overlap) {
-					if (tableNum == num) {
-						System.err.println("예약할 수 없는 테이블 번호입니다.");
-						isTf = true;
+				if(tableNum>=1 && tableNum<=3) {
+					for (Integer num : overlap) {
+						if (tableNum == num) {
+							System.err.println("예약할 수 없는 테이블 번호입니다.");
+							isTf = true;
+						}
 					}
+				}else {
+					System.err.println("테이블 번호는 1, 2, 3 중에 택해야 합니다.");
 				}
 			}
 			System.out.print("예약자 이름>>");

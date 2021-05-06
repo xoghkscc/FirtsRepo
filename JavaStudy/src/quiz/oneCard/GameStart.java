@@ -13,10 +13,10 @@ public class GameStart {
 	Card laidCard;// 바닥에 깔린 덱
 	ArrayList<Card> attackCard = new ArrayList<Card>();// 공격 카드가 담길 List
 	int order = -1;// 턴을 의미
-	ArrayList<Card> trahDeck = new ArrayList<Card>();//
+	ArrayList<Card> trahDeck = new ArrayList<Card>();//버린 카드들을 담을 카드덱
 	int orderQ = 1; // Q가 나오면 순서가 반대로 되어야 하므로 이를 판단하는 변수
 	final int MAX_CARD_ATTACK_TYPE_A = 3;//A카드 공격 시에 추가될 카드 횟수
-	final int MAX_CARD_ATTACK_TYPE_2 = 2;//A카드 공격 시에 추가될 카드 횟수
+	final int MAX_CARD_ATTACK_TYPE_2 = 2;//2카드 공격 시에 추가될 카드 횟수
 	public GameStart(ArrayList<Player> player, CardDeck cd) {
 		// main메서드에서 카드 7장씩 들고 있는 player들과 카드덱들 돌려주고 남은 카드덱들이 넘어옴
 		this.player = player;
@@ -28,17 +28,6 @@ public class GameStart {
 
 	public void gameLogic() {
 		while (true) {
-			//플레이어의 승리를 판단하는 코드
-			for(Player player : player) {
-				int cnt=1;
-				if(player.takeCard.size()==0) {
-					System.out.println("-----------------------------");
-					System.out.printf("[%d] 플레이어의 승리!!\n", cnt);
-					System.out.println("-----------------------------");
-					System.exit(0);//시스템 종
-				}
-				cnt++;
-			}
 			
 			// 플레이어에게 나눠줄 카드덱이 다 떨어질 경우 카드덱을 채워주는 기능
 			if (cd.cardDeck == null) {
@@ -47,6 +36,15 @@ public class GameStart {
 
 			order = nextTurn(this.order);// 처음에는 order가 -1이고 nextTurn 메서드를 통해 1씩 증가(자세한건 nextTurn 메서드 확인)
 			turn(this.order);// 본격적인 게임 시작
+		}
+	}
+	
+	public void win() {
+		if(player.get(this.order).takeCard.size()==0) {
+			System.out.println("-----------------------------");
+			System.out.printf("[%d] 플레이어의 승리!!\n", this.order+1);
+			System.out.println("-----------------------------");
+			System.exit(0);//시스템 종료
 		}
 	}
 
@@ -117,6 +115,8 @@ public class GameStart {
 				// 깔린 카드와 던진 카드가 맞지 않기에 false를 리턴에 turn()을 다시 하도록(이때 order(턴)은 유지됨)
 			}
 		}
+		//플레이어의 승리를 판단하는 코드
+		win();
 		laidCard = throwCard;
 		trashCard(laidCard);
 		// 즉 플레이어가 던진 카드가 깔린 카드가 되어버림
