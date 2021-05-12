@@ -31,13 +31,11 @@ class CardDeck{
 
 class Card{
 	String[] showNum = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
-	int[] realNum = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 	String[] shape = {"¢¼", "¢À", "¢¾", "¡ß"};
 	String gameNum=null, gameShape=null;
 	int gameRealNum;
 	public void cardGet(int i, int j) {
 		this.gameNum = showNum[i];
-		this.gameRealNum = realNum[i];
 		this.gameShape = shape[j];
 	}
 	
