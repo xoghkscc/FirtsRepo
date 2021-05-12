@@ -103,14 +103,14 @@ public class E03_SaveGame {
 			FileInputStream fin = new FileInputStream(gameFile);
 			int _byte;
 			try {
-				String date = "";
+				String data = "";
 				int index = 0;
 				while((_byte = fin.read()) != -1) {
-					if(_byte != (char)'\n') {
-						date += (char)_byte;
+					if(_byte != '\n') {
+						data += (char)_byte;
 					}else {
-						gameValue.put(victoryJudgment[index],Integer.parseInt(date));
-						date = "";
+						gameValue.put(victoryJudgment[index],Integer.parseInt(data));
+						data = "";
 						index++;
 					}
 				}
