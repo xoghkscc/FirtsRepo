@@ -1,4 +1,3 @@
-ABCDEF
-æ»≥Á«œººø‰!
-ABCDEF
-æ»≥Á«œººø‰!
+print('hello python)'
+if True:'
+	print('that\'s true')
