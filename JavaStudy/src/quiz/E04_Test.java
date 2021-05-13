@@ -42,8 +42,8 @@ public class E04_Test {
 	final File GAMEFILE = new File(String.format(path, "scoreList"));
 
 	public static void main(String[] args) {
-		ArrayList<UserData> userList = null;
 		E04_Test et = new E04_Test();
+		ArrayList<UserData> userList = et.loadData();
 		et.gameStart(userList);
 
 	}
@@ -54,10 +54,9 @@ public class E04_Test {
 			int userNum = new Scanner(System.in).nextInt();
 			switch (userNum) {
 			case 1:
-				gameStart(GAMEFILE);
+				userList = gameStart(GAMEFILE, userList);
 				break;
 			case 2:
-				userList = loadData();
 				showData(userList);
 				break;
 
@@ -103,12 +102,14 @@ public class E04_Test {
 		return ud;
 	}
 
-	public void gameStart(File GAMEFILE) {
+	public ArrayList<UserData> gameStart(File GAMEFILE, ArrayList<UserData> userList) {
 		UserData db;
-		db = gameLogic();
+		db = gameLogic(userList);
 		if(db != null) {
 		saveDate(db);
+		userList.add(db);
 		}
+		return userList;
 	}
 
 	public void saveDate(UserData db) {
@@ -118,7 +119,6 @@ public class E04_Test {
 			dout.writeUTF(db.name);
 			dout.writeInt(db.userCnt);
 			dout.writeInt(db.userTime);
-
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,10 +129,17 @@ public class E04_Test {
 
 	}
 
-	public UserData gameLogic() {
+	public UserData gameLogic(ArrayList<UserData> userList) {
+		
 		System.out.printf("새로운 사용자의 이름을 입력 >>");
 		String name = new Scanner(System.in).next();
-
+		for(UserData ud : userList) {
+			if(name.equals(ud.name)) {
+				System.err.println("이미 존재하는 계정입니다.");
+				return null;
+			}
+		}
+		
 		sc = new Scanner(System.in);
 		ran = new Random();
 		boolean tf;
