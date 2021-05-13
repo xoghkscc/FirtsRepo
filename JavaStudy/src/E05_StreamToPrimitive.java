@@ -11,7 +11,6 @@ import java.nio.charset.Charset;
 
 import org.omg.CORBA.portable.UnknownException;
 
-import com.sun.org.apache.bcel.internal.classfile.Unknown;
 
 public class E05_StreamToPrimitive {
 	public static void main(String[] args) {

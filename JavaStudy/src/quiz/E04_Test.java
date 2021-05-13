@@ -33,71 +33,34 @@ public class E04_Test {
 	// (횟수가 같다면 시간이 더 적게 걸린사람이 상위 랭킹)
 	// 4. 새로운 게임을 시작할때마다 랭킹을 출력
 	// 맞추고 나면 몇 번만에 맞췄는지 알려주기
-
-//		
-//		StringBuilder sb = new StringBuilder();
-//		for (int i = 0; i < 4; i++) {
-//			sb.append((int)(Math.random()*10));
-//		}
-//		String answer = sb.toString();
-//		System.out.printf("이번 정답 %s\n", answer);
-	String name;
 	Random ran;
 	Scanner sc;
 	int userCnt;
+
 	static String path = "./note/gameUser/%s.data";
-	static HashMap<String, String[]> gameValue;
 	static boolean success;
 	final File GAMEFILE = new File(String.format(path, "scoreList"));
 
 	public static void main(String[] args) {
+		ArrayList<UserData> userList = null;
 		E04_Test et = new E04_Test();
-		et.loadData();
-		et.gameStart();
+		et.gameStart(userList);
 
 	}
-	
-	public void loadData() {
-		
-		boolean tf = true;
-		String name;
-		while(tf) {
-		try {
-			FileInputStream in = new FileInputStream(GAMEFILE);
-			DataInputStream	din = new DataInputStream(in);
-			try {
-				name =  din.readUTF();
-				String[] value = {Integer.toString(din.readInt()) , Integer.toString(din.readInt())};
-				gameValue.put(name, value);
-			}catch (Exception e) {
-				tf = false;
-				din.close();
-			}
-			
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (Exception e) {
-			}
-		}
-		
-	}
-	
-	
-	public void gameStart() {
+
+	public void gameStart(ArrayList<UserData> userList) {
 		while (true) {
 			System.out.printf("1.게임 시작  2. 랭킹 확인  3. 종료하기>>");
 			int userNum = new Scanner(System.in).nextInt();
 			switch (userNum) {
 			case 1:
-				System.out.printf("새로운 사용자의 이름을 입력 >>");
-				name = new Scanner(System.in).next();
-				gameStart(name, GAMEFILE);
+				gameStart(GAMEFILE);
 				break;
 			case 2:
-				showData();
+				userList = loadData();
+				showData(userList);
 				break;
-				
+
 			case 3:
 				System.out.println("게임 끝!");
 				System.exit(0);
@@ -110,54 +73,52 @@ public class E04_Test {
 		}
 	}
 
-public void showData() {
-		
+	public ArrayList<UserData> loadData() {
+		ArrayList<UserData> ud = new ArrayList<UserData>();
 		boolean tf = true;
 		FileInputStream in;
-		ArrayList<UserDate> userList = new ArrayList();
 		try {
 			in = new FileInputStream(GAMEFILE);
-			DataInputStream	din = new DataInputStream(in);
-			while(tf) {
+			DataInputStream din = new DataInputStream(in);
+			while (tf) {
 				try {
 					try {
-						userList.add(new UserDate( din.readUTF(), din.readInt(), din.readInt()));
-						
-					}catch (Exception e) {
+						UserData db = new UserData(din.readUTF(), din.readInt(), din.readInt());
+						ud.add(db);
+					} catch (Exception e) {
 						tf = false;
 						din.close();
 					}
+
 				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}catch (Exception e) {
+				} catch (Exception e) {
 				}
-				
 			}
 		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Collections.sort(userList, new UserRank());
-		System.out.println(userList);
-	}
-	
-	
-	public void gameStart(String name, File GAMEFILE) {
-		gameValue = new HashMap<>();
-		String[] value;
-		
-		value = gameLoic();
-		saveDate(name, value);
-		gameValue.put(name, value);
+		return ud;
 	}
 
-	public void saveDate(String name,String[] value ) {
+	public void gameStart(File GAMEFILE) {
+		UserData db;
+		db = gameLogic();
+		if(db != null) {
+		saveDate(db);
+		}
+	}
+
+	public void saveDate(UserData db) {
 		try {
 			FileOutputStream fout = new FileOutputStream(GAMEFILE, true);
 			DataOutputStream dout = new DataOutputStream(fout);
-			dout.writeUTF(name);
-			dout.writeInt(Integer.parseInt(value[0]));
-			dout.writeInt(Integer.parseInt(value[1]));
-			
+			dout.writeUTF(db.name);
+			dout.writeInt(db.userCnt);
+			dout.writeInt(db.userTime);
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -165,11 +126,13 @@ public void showData() {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-//					횟수		시간
-	public String[] gameLoic() {
+
+	public UserData gameLogic() {
+		System.out.printf("새로운 사용자의 이름을 입력 >>");
+		String name = new Scanner(System.in).next();
+
 		sc = new Scanner(System.in);
 		ran = new Random();
 		boolean tf;
@@ -261,47 +224,63 @@ public void showData() {
 			success = false;
 		}
 		long endTime = System.currentTimeMillis();
-		long timeTaken = endTime - startTime;
-		String[] value = {Integer.toString(userCnt), Integer.toString((int)timeTaken)};
-		return value;
+		if (success) {
+			long timeTaken = endTime - startTime;
+			UserData db = new UserData(name, userCnt, (int) timeTaken);
+			return db;
+		} else {
+			return null;
+		}
 	}
 
+	public void showData(ArrayList<UserData> userList) {
+
+		Collections.sort(userList, new UserRank());
+		int cnt = 1;
+		for(UserData userData : userList) {
+			System.out.print(cnt+"위 : "+userData);
+			cnt++;
+			if(cnt > 30) {
+				return;
+			}
+		}
+		System.out.println();
+	}
 
 }
 
-class UserDate {
+class UserData {
 	String name;
 	int userCnt;
 	int userTime;
-	public UserDate(String name,int userCnt, int userTime) {
+
+	public UserData(String name, int userCnt, int userTime) {
 		this.name = name;
 		this.userCnt = userCnt;
 		this.userTime = userTime;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("%s님은 횟수 : %d회, %d(m/s)만에 성공하였습니다.\n", this.name, this.userCnt, this.userTime);
 	}
 }
 
-class UserRank implements Comparator<UserDate>{
+class UserRank implements Comparator<UserData> {
 
 	@Override
-	public int compare(UserDate o1, UserDate o2) {
+	public int compare(UserData o1, UserData o2) {
 		if (o1.userCnt < o2.userCnt) {
 			return -1;
 		} else if (o1.userCnt == o2.userCnt) {
-			if(o1.userTime < o2.userTime) {
+			if (o1.userTime < o2.userTime) {
 				return -1;
-			}else {
+			} else {
 				return 1;
 			}
 		} else {
 			return 1;
 		}
 	}
-	
 
 }
-
