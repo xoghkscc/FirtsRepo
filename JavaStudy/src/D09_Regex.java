@@ -65,25 +65,25 @@ public class D09_Regex {
 //		//							첫번째는 숫자x $,일반적인 문자 두번째부터는 $, 일반적인 문자임
 //		
 //		
-//		String fruit_text = "apple/banana/orange/grape/pineapple/peach/mango/redapple";
+		String fruit_text = "apple/banana/orange/grape/pineapple/peach/mango/redapple";
 //		Pattern regex = Pattern.compile("/");
 //		String[] fruits = regex.split(fruit_text);
 //		System.out.println(Arrays.toString(fruits));
 //		
-//		Pattern regex3 = Pattern.compile("[a-zA-Z]");//알파벳을 찾아줌
+		Pattern regex3 = Pattern.compile("[a-zA-Z]");//알파벳을 찾아줌
 //		Pattern regex2 = Pattern.compile("apple");//apple이 되는 것들을 찾아줌
-//		Matcher matcher =  regex2.matcher(fruit_text);
+		Matcher matcher =  regex3.matcher(fruit_text);
 //		System.out.println(fruit_text);
-//		while(matcher.find()){
-//			System.out.println("찾은것 : "+matcher.group());
+		while(matcher.find()){
+			System.out.println("찾은것 : "+matcher.group());
 //			System.out.println("위치 : "+matcher.start() + "부터" + matcher.end());
-//		}
-//	숫자, 문자, 특수문자를 혼합 구성하고 2종류 이상의 문자를 조합 8자이상 16자 이하
-		String regex = "(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*_]).{8,16}";
-	
-		while(true) {
-			String input2=MyScanner.input("비밀번호 입력>>");
-		System.out.println(Pattern.matches(regex, input2));
 		}
+//	숫자, 문자, 특수문자를 혼합 구성하고 2종류 이상의 문자를 조합 8자이상 16자 이하
+//		String regex = "(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*_]).{8,16}";
+//	
+//		while(true) {
+//			String input2=MyScanner.input("비밀번호 입력>>");
+//		System.out.println(Pattern.matches(regex, input2));
+//		}
 	}
 }
