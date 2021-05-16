@@ -15,7 +15,6 @@ import java.util.Map.Entry;
 import java.util.regex.*;
 import java.util.regex.Pattern;
 
-
 public class E07_JSON {
 	File file = new File("./note/myMap.json");
 
@@ -37,14 +36,13 @@ public class E07_JSON {
 		map.put("language", new String[] { "C", "JAVA", "Javascript", "React" });
 		map.put("lotto", new Integer[] { 1, 2, 3, 4, 5, 6, 7 });
 		map.put("ArrayList", al);
-		
 		E07_JSON js = new E07_JSON();
 		js.mapToJsonFile(map);
 		String str = js.mapToJsonStr(map);
 		System.out.println(str);
 		map = js.javaMapLoad(str);
 		System.out.println(map);
-		
+
 	}
 
 	public void mapToJsonFile(HashMap<String, Object> map) {
@@ -77,14 +75,14 @@ public class E07_JSON {
 					String data = "";
 					ArrayList new_name = (ArrayList) entrySet.getValue();
 					for (int i = 0; i < new_name.size(); i++) {
-						if(new_name.get(i) instanceof Integer) {
+						if (new_name.get(i) instanceof Integer) {
 							Integer num = (Integer) new_name.get(i);
 							data += Integer.toString(num) + ", ";
-						}else if(new_name.get(i) instanceof String){
-							data += "\""+(String)new_name.get(i) + "\", ";
-						}else {
-							data += (String)new_name.get(i) +", ";
-							
+						} else if (new_name.get(i) instanceof String) {
+							data += "\"" + (String) new_name.get(i) + "\", ";
+						} else {
+							data += (String) new_name.get(i) + ", ";
+
 						}
 					}
 					dataOut.write("[" + data + "]");
@@ -129,7 +127,7 @@ public class E07_JSON {
 		Pattern regex = Pattern.compile(":");
 		Pattern regex2 = Pattern.compile(",");
 		Pattern regex3 = Pattern.compile("]");
-		ArrayList list =new ArrayList<>();
+		ArrayList list = new ArrayList<>();
 		String value;
 
 		String[] strArr = regex.split(str);
@@ -137,53 +135,48 @@ public class E07_JSON {
 
 		Pattern regexName = Pattern.compile("[0-9A-Za-z°¡-ÆR-,]");
 
-		for (int i = 0; i < strArr.length-1; i++) {
-			list =new ArrayList<>();
+		for (int i = 0; i < strArr.length - 1; i++) {
+			list = new ArrayList<>();
 			value = "";
-			String key="";
-			
+			String key = "";
+
 			Matcher matcher = regexName.matcher(strArr[i]);
-			while(matcher.find()) {
+			while (matcher.find()) {
 				key += matcher.group();
 			}
-//			System.out.println("key : " + key);
 			i++;
-			if(strArr[i].charAt(1)!='[') {
+			if (strArr[i].charAt(1) != '[') {
 				String[] strArr2 = regex2.split(strArr[i]);
 				Matcher matcher2 = regexName.matcher(strArr2[0]);
-				
-				while(matcher2.find()) {
+
+				while (matcher2.find()) {
 					value += matcher2.group();
 				}
 				strArr[i] = strArr2[1];
-//				System.out.println("value : "+ value);
-				
+
 				map2.put(key, value);
-				
-			}else {
+
+			} else {
 				String str2 = "";
 				String str3 = "";
 				String[] strArr2 = regex3.split(strArr[i]);
 				Matcher matcher2 = regexName.matcher(strArr2[0]);
-				while(matcher2.find()) {
+				while (matcher2.find()) {
 					String ch = matcher2.group();
-					if(ch.equals(",")) {
+					if (ch.equals(",")) {
 						list.add(str3);
 						str3 = "";
-					}else {
+					} else {
 						str2 += ch;
 						str3 += ch;
-						
 					}
 				}
 				strArr[i] = strArr2[1];
-//				System.out.println("value : "+ list);
 				map2.put(key, list);
 			}
 			i--;
-//			System.out.println("---------------------");
 		}
 		return map2;
 	}
 
-}	
+}
