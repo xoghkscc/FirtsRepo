@@ -46,7 +46,7 @@ public class E07_JSON {
 	}
 
 	public void mapToJsonFile(HashMap<String, Object> map) {
-		try {
+		try{
 			OutputStreamWriter dataOut = new OutputStreamWriter(new FileOutputStream(file));
 			dataOut.write("{\n");
 			for (Entry<String, Object> entrySet : map.entrySet()) {
@@ -157,7 +157,6 @@ public class E07_JSON {
 				map2.put(key, value);
 
 			} else {
-				String str2 = "";
 				String str3 = "";
 				String[] strArr2 = regex3.split(strArr[i]);
 				Matcher matcher2 = regexName.matcher(strArr2[0]);
@@ -167,7 +166,6 @@ public class E07_JSON {
 						list.add(str3);
 						str3 = "";
 					} else {
-						str2 += ch;
 						str3 += ch;
 					}
 				}
