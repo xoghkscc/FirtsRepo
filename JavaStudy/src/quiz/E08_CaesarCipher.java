@@ -24,12 +24,12 @@ public class E08_CaesarCipher {
 		File outputFile = new File("./note/txt/frankenstein.encrypted.txt");
 		
 		E08_CaesarCipher cipher = new E08_CaesarCipher();
-		StringBuilder str, str2, str3;
+		StringBuilder str, str2;
 		str = cipher.getFileStr(inputFile);// 파일에 있는 정보를 문자열로 받아오는 메서드
 
 		int key = cipher.setEncrypted(str, outputFile);// 문자열을 넘기면 암호화에 맞게 정보를 변환한 파일을 만드는 메서드(사용된 KEY값 반환)
-		str2 = cipher.getFileStr(outputFile, key);
-		System.out.println("암호화 된 텍스트 돌리기 : "+str);
+		str2 = cipher.decryption(outputFile, key);
+		System.out.println("암호화 된 텍스트 돌리기 : "+str2);
 		System.out.println("랜덤으로 사용된 키 값 :" + key);
 	}
 
@@ -53,7 +53,7 @@ public class E08_CaesarCipher {
 		}
 		return str;
 	}
-
+	//내가 생각한 방법
 	public StringBuilder getFileStr(File inputFile, int key) {
 		
 		StringBuilder str = new StringBuilder();
@@ -132,9 +132,48 @@ public class E08_CaesarCipher {
 			e.printStackTrace();
 		}
 		return key;
+		
 	}
 	
-	//abcdefghijklmnopqrstuvwxyz
+	//암호화된 파일을 해석하는 decryption()메서드 만들기
+	
+	//쌤이 생각한 방법
+public StringBuilder decryption(File inputFile, int key) {
+		String upper = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+		String lower = upper.toLowerCase();
+		StringBuilder str = new StringBuilder();
+		try {
+			int ch;
+			FileInputStream fi = new FileInputStream(inputFile);
+			InputStreamReader in = new InputStreamReader(fi);
+			while ((ch = in.read()) != -1) {
+					char alpha = (char) ch;
+					if(Character.isAlphabetic(alpha)) {
+						switch (Character.getType(alpha)) {
+						case Character.UPPERCASE_LETTER:
+								alpha = upper.charAt((upper.indexOf(alpha)+key) % 26);
+							break;
+						case Character.LOWERCASE_LETTER:
+							alpha = lower.charAt((lower.indexOf(alpha)+key) % 26);
+							
+							break;
+
+						default:
+							break;
+						}
+					}
+					str.append(alpha);
+			}
+			in.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return str;
+	}
 }
 
 
