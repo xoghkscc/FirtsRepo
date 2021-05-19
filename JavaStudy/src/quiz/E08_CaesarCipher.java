@@ -175,9 +175,6 @@ public StringBuilder decryption(File inputFile, int key) {
 		return str;
 	}
 
-	public void main() {
-		System.out.println("메인 테스트입니다.");
-	}
 }
 
 
