@@ -1,14 +1,14 @@
-import myobj.Overwatch_hero;
-import myobj.Peach;
+import myobj.etc.Overwatch_hero;
+import myobj.etc.Peach;
 
 public class C02_ooP {
 	public static void main(String[] args) {
-		//Apple Å¬·¡½º(¼³°èµµ)·Î ¸¸µé¾î³½ ÀÎ½ºÅÏ½º(»ý»êÇ°) a1
+		//Apple Å¬ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½èµµ)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½î³½ ï¿½Î½ï¿½ï¿½Ï½ï¿½(ï¿½ï¿½ï¿½ï¿½Ç°) a1
 		Apple a1 = new Apple();
 		Apple a2 = new Apple();
 		Apple a3 = new Apple();
 		
-		//´Ù¸¥ ÆÐÅ°Áö¿¡ ¼±¾ðÇÑ public class¸¦ »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+		//ï¿½Ù¸ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ public classï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.
 		Peach p1 = new Peach();
 		
 		a1.calorie = 100;
@@ -21,8 +21,8 @@ public class C02_ooP {
 //		System.out.println(a2.calorie);
 //		System.out.println(a3.calorie);
 		
-		//myobj ÆÐÅ°Áö¿¡ Çö½ÇÀÇ °´Ã¼¸¦ ÂüÁ¶ÇÏ¿© Å¬·¡½º¸¦ ÇÏ³ª »ý¼ºÇÑ ÈÄ ÀÎ½ºÅÏ½º¸¦ »ý¼ºÇÏ°í °ªÀ» Ã¤¿î´Ù¿ò Ãâ·ÂÇØ º¸¼¼¿ä.
-		//*ÀÎ½ºÅÏ½º º¯¼ö °³ ÀÌ»ó, ÀÎ½ºÅÏ½º ¸Þ¼­µå 2°³ ÀÌ»ó, °úÀÏ ±ÝÁö
+		//myobj ï¿½ï¿½Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		//*ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì»ï¿½, ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ 2ï¿½ï¿½ ï¿½Ì»ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		Overwatch_hero hero1 = new Overwatch_hero();
 		
 		hero1.setHeroName("reaper");
@@ -30,7 +30,7 @@ public class C02_ooP {
 		hero1.setHealth(250);
 		hero1.setPower(1+20);
 		
-		System.out.printf("¿µ¿õ %sÀÇ °ø°Ý·ÂÀº %d, Ã¼·ÂÀº %d, Æ÷Áö¼ÇÀº %sÀÔ´Ï´Ù", hero1.getHeroName(), hero1.getPower(), hero1.getHealth(), hero1.getPosition() );
+		System.out.printf("ï¿½ï¿½ï¿½ï¿½ %sï¿½ï¿½ ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ %d, Ã¼ï¿½ï¿½ï¿½ï¿½ %d, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ %sï¿½Ô´Ï´ï¿½", hero1.getHeroName(), hero1.getPower(), hero1.getHealth(), hero1.getPosition() );
 		
 	}
 }

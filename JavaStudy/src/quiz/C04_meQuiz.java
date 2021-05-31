@@ -2,10 +2,10 @@ package quiz;
 
 import java.util.Scanner;
 
-import myobj.UserInfo;
+import myobj.etc.UserInfo;
 
 public class C04_meQuiz {
-//myobj¿¡ À¯Àú Á¤º¸¸¦ ÀÔ·Â
+//myobjï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
@@ -16,18 +16,18 @@ public class C04_meQuiz {
 		boolean tf = true;
 		while(tf) {
 			boolean tf1 = true;
-			System.out.printf("À¯ÀúÀÇ ¹øÈ£¸¦ ÀÔ·Â : (0~9, 10À» ÀÔ·ÂÇÏ¸é Á¾·á)");
+			System.out.printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ : (0~9, 10ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½)");
 			int userNum = sc.nextInt();
 			if(userNum == 10) {
-				System.out.println("·Î±×ÀÎ ÇÁ·Î±×·¥ Á¾·á");
+				System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½");
 				break;
 			}
 			while(tf1) {
 				int num = 0;
 				if(userInfo[userNum].getId().equals("")) {
-				System.out.printf("1.°èÁ¤ »ý¼º, 2. ·Î±×ÀÎ 3. °èÁ¤ Ã£±â 4. Á¾·á : ");
+				System.out.printf("1.ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 2. ï¿½Î±ï¿½ï¿½ï¿½ 3. ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ 4. ï¿½ï¿½ï¿½ï¿½ : ");
 				}else {
-					System.out.printf("2. ·Î±×ÀÎ 3. °èÁ¤ Ã£±â 4. Á¾·á : ");
+					System.out.printf("2. ï¿½Î±ï¿½ï¿½ï¿½ 3. ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ 4. ï¿½ï¿½ï¿½ï¿½ : ");
 					
 				}
 				num = sc.nextInt();
@@ -37,12 +37,12 @@ public class C04_meQuiz {
 					break;
 				case 2:
 					if(userInfo[userNum].getId().equals("")) {
-						System.out.println("µî·ÏµÈ °èÁ¤ÀÌ ¾øÀ½");
+						System.out.println("ï¿½ï¿½Ïµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 						
 					}else {
-						System.out.printf("¾ÆÀÌµð ÀÔ·Â :");
+						System.out.printf("ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Ô·ï¿½ :");
 						String id = sc.next();
-						System.out.printf("ºñ¹Ð¹øÈ£ ÀÔ·Â :");
+						System.out.printf("ï¿½ï¿½Ð¹ï¿½È£ ï¿½Ô·ï¿½ :");
 						String pw = sc.next();
 						userInfo[userNum].UserInfo(id, pw);
 					}
@@ -50,12 +50,12 @@ public class C04_meQuiz {
 					break;
 				case 3:
 					if(userInfo[userNum].getId().equals("")) {
-						System.out.println("µî·ÏµÈ °èÁ¤ÀÌ ¾øÀ½");
+						System.out.println("ï¿½ï¿½Ïµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 					}else {
-						System.out.print("ÀÌ¸§Àº? :");
+						System.out.print("ï¿½Ì¸ï¿½ï¿½ï¿½? :");
 						String name = sc.next();
 						System.out.println(userInfo[userNum].getPwQuiz());
-						System.out.print("ÄûÁî Á¤´äÀº? :");
+						System.out.print("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½? :");
 						int pwAnswer = sc.nextInt();
 						userInfo[userNum].UserInfo(name, pwAnswer);
 					}

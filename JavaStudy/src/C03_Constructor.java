@@ -1,22 +1,22 @@
 import java.util.Scanner;
 
-import myobj.Overwatch_hero;
-import myobj.Peach;
+import myobj.etc.Overwatch_hero;
+import myobj.etc.Peach;
 
 public class C03_Constructor {
 	public static void main(String[] args) {
 		
-//		new Orange();//¿À·»Áö°¡ ÃÊ±âÈ­ µÇ¾ú½À´Ï´Ù.-->¿©±â¼­ ³¡
-//		Orange or = new Orange(9, 10, new int[] {235, 143, 52});//¿À¹ö¶óÀÌµù
+//		new Orange();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.-->ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½
+//		Orange or = new Orange(9, 10, new int[] {235, 143, 52});//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½
 //		
-//		Orange[] orange_box = new Orange[7];//-->OrangeÅ¸ÀÔÀÇ ¹è¿­ »ý¼º
+//		Orange[] orange_box = new Orange[7];//-->OrangeÅ¸ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½
 //		
 //		for (int i = 0; i < 5; i++) {
-//			orange_box[i] = new Orange();//-->¿­28~33 ³»¿ëÀÌ ¹è¿­ ¾È¿¡ µé¾î°¨
+//			orange_box[i] = new Orange();//-->ï¿½ï¿½28~33 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ ï¿½È¿ï¿½ ï¿½ï¿½î°¨
 //		}
 //		
 //		System.out.println(orange_box[0].sweet);//5
-//		System.out.println(orange_box[1].size);//·£´ý
+//		System.out.println(orange_box[1].size);//ï¿½ï¿½ï¿½ï¿½
 //		System.out.println(orange_box[2].color[0]);//255
 //		System.out.println(orange_box[3].color[1]);//165
 //		System.out.println(orange_box[4].color[2]);//0
@@ -43,24 +43,24 @@ class Orange {
 	int sweet;
 	int size;
 	int[] color;
-	// »ý¼ºÀÚ - ÀÌ Å¬·¡½ºÀÇ ÀÎ½ºÅÏ½º¸¦ »ý¼ºÇÒ ¶§ °¡Àå ¸ÕÀú È£ÃâµÇ´Â ¸Þ¼­µå
-	Orange() {//Å¬·¡½º OrangeÀÇ ±âº»»ý¼ºÀÚ
-		System.out.println("¿À·»Áö°¡ ÃÊ±âÈ­ µÇ¾ú½À´Ï´Ù.");
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Ç´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+	Orange() {//Å¬ï¿½ï¿½ï¿½ï¿½ Orangeï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		this.sweet = 5;
 		this.size = (int)(Math.random()*3+7);
 		this.color = new int[] {255, 165, 0};				
 	}
 
-	Orange(int sweet) {// ¿À¹ö·Îµù
-		// ÀÎ½ºÅÏ½º º¯¼ö sweet¿¡ ³Ñ°Ü¹ÞÀº sweet¸¦ ´ëÀÔ
+	Orange(int sweet) {// ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½
+		// ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ sweetï¿½ï¿½ ï¿½Ñ°Ü¹ï¿½ï¿½ï¿½ sweetï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		this.sweet = sweet;
 	}
 
-	Orange(int sweet, int size, int[] color) {//¿À¹ö·Îµù
+	Orange(int sweet, int size, int[] color) {//ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½
 		this.sweet = sweet;
 		this.size = size;
 		this.color = color;
-		System.out.println("¿À¹ö¶óÀÌµù");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½");
 	}
 
 
@@ -77,6 +77,6 @@ class Strawberry{
 	
 }
 
-//¾Æ±î myobj¿¡ ¸¸µé¾ú´ø Å¬·¡½º¿¡ ¾Ë¸ÂÀº »ý¼ºÀÚ¸¦ 2°³ ÀÌ»ó Ãß°¡ÇØ º¸¼¼¿ä.
+//ï¿½Æ±ï¿½ myobjï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ 2ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
 

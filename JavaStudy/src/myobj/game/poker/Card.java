@@ -16,10 +16,10 @@ public class Card implements Comparable<Card>{
 	final public static Rank QUEEN 	= new Rank(11, "Q");
 	final public static Rank KING 	= new Rank(12, "K");
 	
-	final public static Suit SPADE	 = new Suit(0, '¢¼', "½ºÆäÀÌµå", "Spade");
-	final public static Suit CLOVER	 = new Suit(1, '¢À', "Å¬·Î¹ö", "Clover");
-	final public static Suit HEART	 = new Suit(2, '¢½', "ÇÏÆ®", "Heart");
-	final public static Suit DIAMOND = new Suit(3, '¡Ş', "´ÙÀÌ¾Æ¸óµå", "Diamond");
+	final public static Suit SPADE	 = new Suit(0, 'ã…‡', "ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½", "Spade");
+	final public static Suit CLOVER	 = new Suit(1, 'ã…', "Å¬ï¿½Î¹ï¿½", "Clover");
+	final public static Suit HEART	 = new Suit(2, 'ã„¹', "ï¿½ï¿½Æ®", "Heart");
+	final public static Suit DIAMOND = new Suit(3, 'ã…', "ï¿½ï¿½ï¿½Ì¾Æ¸ï¿½ï¿½", "Diamond");
 	
 	final public static Rank[] RANKS = {
 			ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE,

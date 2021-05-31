@@ -1,4 +1,4 @@
-import myobj.GalaxyTabs5e;
+import myobj.etc.GalaxyTabs5e;
 
 public class C04_Static {
 	public static void main(String[] args) {
@@ -17,31 +17,31 @@ public class C04_Static {
 //		System.out.println(Lamp.width);//-->30
 		GalaxyTabs5e price = new GalaxyTabs5e();
 		
-		System.out.println("°¶·°½ÃÅÇs5eÀÇ È­¸é Å©±â : "+ GalaxyTabs5e.screenSize);
-		System.out.println("°¶·°½ÃÅÇs5eÀÇ ·¥ Å©±â : "+ GalaxyTabs5e.ram);
-		System.out.println("°¶·°½ÃÅÇs5eÀÇ ¸Þ¸ð¸® Å©±â : "+ GalaxyTabs5e.memory);
-		System.out.println("°¶·°½ÃÅÇs5eÀÇ g¸¶ÄÏ °¡°Ý : "+ price.getGmarketPrice());
-		System.out.println("°¶·°½ÃÅÇs5eÀÇ ¿Á¼Ç °¡°Ý : "+ price.getAuctionPrice());
-		System.out.println("°¶·°½ÃÅÇs5eÀÇ ÀÎÅÍÆÄÅ© °¡°Ý : "+ price.getInterparkPrice());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s5eï¿½ï¿½ È­ï¿½ï¿½ Å©ï¿½ï¿½ : "+ GalaxyTabs5e.screenSize);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s5eï¿½ï¿½ ï¿½ï¿½ Å©ï¿½ï¿½ : "+ GalaxyTabs5e.ram);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s5eï¿½ï¿½ ï¿½Þ¸ï¿½ Å©ï¿½ï¿½ : "+ GalaxyTabs5e.memory);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s5eï¿½ï¿½ gï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : "+ price.getGmarketPrice());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s5eï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : "+ price.getAuctionPrice());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s5eï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ : "+ price.getInterparkPrice());
 	}
 }
 
 class Lamp {
-	// °­ÀÇÀå ³»ºÎÀÇ ¸ðµç Çü±¤µîÀÇ ³Êºñ¿Í ³ôÀÌ´Â ÀÏÁ¤ÇÏ´Ù
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êºï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½
 	static int width = 50;
 	static int height = 200;
 	int[] position;
 	double brightnness;
 	boolean powerOn;
 	
-	//static ¸Þ¼­µå¿¡¼­ staitc º¯¼ö¿¡ Á¢±ÙÇÏ´Â °ÍÀº °¡´É
+	//static ï¿½Þ¼ï¿½ï¿½å¿¡ï¿½ï¿½ staitc ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public static void changeWidth(int width) {
 		Lamp.width = width;
 	}
-	//¸ÞÀÎÇÔ¼ö¿¡¼­ Lamp.turnOn();À» »ç¿ëÇÒ ¼ö ÀÖÀ¸¹Ç·Î static ¸Þ¼­µå¿¡¼­´Â ÀÎ½ºÅÏ½º ÀÚ¿ø(position, powerOn, brightnness)À» »ç¿ëÇÒ ¼ö ¾ø´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ Lamp.turnOn();ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ static ï¿½Þ¼ï¿½ï¿½å¿¡ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½Ú¿ï¿½(position, powerOn, brightnness)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	static void turnOn() {
 //		this.powerOn = true;
 	}
 }
 
-//myobj ÆÐÅ°Áö¿¡ static º¯¼ö¸¦ Æ÷ÇÔÇÑ Å¬·¡½º¸¦ ÇÏ³ª Á¤ÀÇ ÇØº¸¼¼¿ä.
+//myobj ï¿½ï¿½Å°ï¿½ï¿½ï¿½ï¿½ static ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½.

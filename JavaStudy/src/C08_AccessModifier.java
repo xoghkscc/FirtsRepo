@@ -1,4 +1,4 @@
-import myobj.Diffpackage;
+import myobj.etc.Diffpackage;
 
 public class C08_AccessModifier {
 	public static void main(String[] args) {
@@ -32,7 +32,7 @@ class Choco extends Diffpackage{
 	
 		public Choco() {
 			this.protected_method();
-			//»ó¼Ó ¹ÞÀ¸¸é ´Ù¸¥ ÆÐÅ°Áö¿¡¼­µµ »ç¿ë °¡´É
+			//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 	void abc() {
 		Snack s = new Snack();
