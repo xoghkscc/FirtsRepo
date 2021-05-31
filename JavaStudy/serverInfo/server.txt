@@ -1,4 +1,4 @@
 oracle.jdbc.driver.OracleDriver
-jdbc:oracle:thin:@3.35.52.40:1521:xe
-awsconnection
+jdbc:oracle:thin:@localhost/XEPDB1
+java1
 1234

@@ -1,0 +1,2 @@
+11c(aws) : jdbc:oracle:thin:@3.35.52.40:1521:xe
+18c(로컬) : jdbc:oracle:thin:@localhost/XEPDB1
