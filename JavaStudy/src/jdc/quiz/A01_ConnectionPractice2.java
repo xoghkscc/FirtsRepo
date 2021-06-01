@@ -19,7 +19,7 @@ public class A01_ConnectionPractice2 {
 				+ "WHERE department_id = %d", MyScanner.inputInt("부서번호 입력 : "));
 		try (Connection conn = sc.connection();
 			PreparedStatement pstmt = sc.preparedStatement(queryStatement);
-			ResultSet rs = sc.resultSetQuery();){
+			ResultSet rs = pstmt.executeQuery();){
 //			sc.oracleConn(); 
 			
 			while(rs.next()) {

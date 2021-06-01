@@ -26,7 +26,7 @@ public class A02_CRUD {
 		}
 		System.out.println(rows + " : row update");
 		
-		ResultSet rs = sc.resultSetQuery();
+		ResultSet rs = psmt.executeQuery();
 
 		while (rs.next()) {
 			System.out.printf("%d\t%s\t%s\n", rs.getInt(1), rs.getString(2), rs.getString(3));
