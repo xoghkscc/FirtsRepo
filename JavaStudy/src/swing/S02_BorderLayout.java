@@ -87,21 +87,23 @@ class PopMenuExam extends Frame{
 	
 	
 	public PopMenuExam() {
-		PopupMenu pm = new PopupMenu();
-		MenuItem pm_item1 = new MenuItem("hi");
-		pm.add(pm_item1);
-		
-		add(pm);
-		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		setLocation(200, 50);
 		setSize(300, 400);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		setLayout(new BorderLayout());
+		JButton quit_btn = new JButton("HI");
 		
+		JButton update_btn = new JButton("BY");
+		
+		add(update_btn, BorderLayout.NORTH);
+		add(quit_btn, BorderLayout.SOUTH);
 	}
 
 	private void setDefaultCloseOperation(int exitOnClose) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }
