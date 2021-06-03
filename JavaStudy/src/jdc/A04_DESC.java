@@ -18,7 +18,7 @@ public class A04_DESC {
 				PreparedStatement pstm = conn.prepareStatement(sql);
 				ResultSet rs = pstm.executeQuery();
 		){
-			Employee e = new Employee(rs);
+			Employee e = new Employee();
 			ResultSetMetaData meta = rs.getMetaData();
 			System.out.println("컬럼이 몇 개인가? : "+ meta.getColumnCount());
 			for(int i = 1, len = meta.getColumnCount(); i < len; i++) {

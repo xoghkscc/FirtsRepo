@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Employee {
 	private int employee_id;
-	private String fiirst_name;
+	private String first_name;
 	private String last_name;
 	private String email;
 	private String phone_number;
@@ -16,34 +16,44 @@ public class Employee {
 	private double commission_pct;
 	private int manager_id;
 	private int department_id;
+	private Employee manager;
+	private Department department;
 	
-	public Employee(ResultSet rs) throws SQLException  {
-		employee_id = rs.getInt("employee_id");
-		fiirst_name = rs.getString("fiirst_name");
-		last_name = rs.getString("last_name");
-		email = rs.getString("email");
-		phone_number = rs.getString("phone_number");
-		hire_date = rs.getDate("hire_date");
-		job_id = rs.getString("job_id");
-		salary = rs.getInt("salary");
-		commission_pct = rs.getInt("commission_pct");
-		manager_id = rs.getInt("manager_id");
-		department_id = rs.getInt("department_id");
+	public Employee() {
 		
 	}
 	
-	
+	public Employee getManager() {
+		return manager;
+	}
+
+
+	public void setManager(Employee manager) {
+		this.manager = manager;
+	}
+
+
+	public Department getDepartment() {
+		return department;
+	}
+
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+
 	public int getEmployee_id() {
 		return employee_id;
 	}
 	public void setEmployee_id(int employee_id) {
 		this.employee_id = employee_id;
 	}
-	public String getFiirst_name() {
-		return fiirst_name;
+	public String getFirst_name() {
+		return first_name;
 	}
-	public void setFiirst_name(String fiirst_name) {
-		this.fiirst_name = fiirst_name;
+	public void setFirst_name(String fiirst_name) {
+		this.first_name = fiirst_name;
 	}
 	public String getLast_name() {
 		return last_name;
