@@ -13,11 +13,10 @@ import myobj.MySeverConnection;
 public class HikariCP {
 	HikariDataSource ds;
 	public HikariCP() {
-		MySeverConnection mc = new MySeverConnection();
 		HikariConfig config = new HikariConfig();
-		config.setJdbcUrl(mc.getUrl());
-		config.setUsername(mc.getId());
-		config.setPassword(mc.getPw());
+		config.setJdbcUrl("jdbc:oracle:thin:@3.35.52.40:1521:xe");
+		config.setUsername("hr");
+		config.setPassword("1234");
 		config.addDataSourceProperty("cachePrepStmts", "true");
 		config.addDataSourceProperty("prepStmtCacheSize", "250");
 		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
