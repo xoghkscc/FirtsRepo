@@ -289,7 +289,7 @@ btn.addActionListener(new ButtonAction());
 
 public class ButtonAction implements ActionListener{
   public void actionPerformed(ActionEvent e) {
-		//해당 컴포넌트에 action 발생시 e로 이벤트 당시의 정보가 넘어온다.
+	//해당 컴포넌트에 action 발생시 e로 이벤트 당시의 정보가 넘어온다.
     // 버튼을 클릭하였을 때에 프로그래머가 발동하였으면 하는 코드를 이곳에 작성하면 됨
 	}
 }
