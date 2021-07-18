@@ -259,7 +259,7 @@ public class HikariCP {
 		HikariConfig config = new HikariConfig();
 		config.setJdbcUrl("jdbc:oracle:thin:@3.35.52.40:1521:xe");
 		config.setUsername("first_project");
-		config.setPassword("1234");
+		config.setPassword("비밀");
 		config.addDataSourceProperty("cachePrepStmts", "true");
 		config.addDataSourceProperty("prepStmtCacheSize", "250");
 		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
