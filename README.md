@@ -98,7 +98,7 @@ char[] text_char = text.toCharArray();
 public class C15_Throw{
   public static void main(String[] args){
     C15_Throw instance = new C15_Throw();
-    instance.dangerous_method();//이 메서드는 Exception클래스를 상속받았기 때문에 예외처리를 반드시 
+    instance.dangerous_method();//이 메서드는 Exception클래스를 상속받았기 때문에 예외처리를 반드시 해야 함
   }
   
   public void dangerous_method() throws FilenotFoundException {
